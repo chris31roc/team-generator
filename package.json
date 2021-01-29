@@ -1,0 +1,25 @@
+{
+  "name": "team-generator",
+  "version": "1.0.0",
+  "description": "An application that generates a manager and team members",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris31roc/team-generator.git"
+  },
+  "keywords": [
+    "team",
+    "generator",
+    "homework",
+    "10"
+  ],
+  "author": "Christopher Hicks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chris31roc/team-generator/issues"
+  },
+  "homepage": "https://github.com/chris31roc/team-generator#readme"
+}
