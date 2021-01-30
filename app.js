@@ -18,38 +18,38 @@ const addManager = () => {
             inquirer.prompt([
                 {
                     type: "input",
-                    message: "Enter manager's name:",
+                    message: "Manager's name:",
                     name: "name",
                 },
                 {
                     type: "input",
-                    message: "Enter manager's ID:",
+                    message: "Manager's ID:",
                     name: "id",
                 },
                 {
                     type: "input",
-                    message: "Enter manager's email:",
+                    message: "Manager's email:",
                     name: "email",
-                    //email validator function
+                    //validate email
                     default: () => {},
                     validate: function (email) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                      if (valid) {
                     return true;
                     } else {
-                    console.log(" ---Please enter a valid email!---")
+                    console.log(" Enter a valid email address! ")
                     return false;
                     }
                   }  
                 },
                 {
                     type: "input",
-                    message: "Enter manager's office number:",
+                    message: "Manager's office number:",
                     name: "officeNumber",
                 },
-            //function to add created manager's info into team array     
-            ]).then(answers => {
-                const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            //add manager's info into team array     
+            ]).then(responses => {
+                const manager = new Manager(responses.name, responses.id, responses.email, responses.officeNumber);
                 team.push(manager);
                 res();
             });
@@ -73,36 +73,36 @@ const addEmployee = () => {
                 ]
             },
             {
-                message: "Enter engineer's name:",
+                message: "Engineer's name:",
                 name: "name",
                 when: ({ role }) => role === "Engineer"
             },
             {
-                message: "Enter intern's name:",
+                message: "Intern's name:",
                 name: "name",
                 when: ({ role }) => role === "Intern"
             },
             {
-                message: "Enter engineer's ID:",
+                message: "Engineer's ID:",
                 name: "id",
                 when: ({ role }) => role === "Engineer"
             },
             {
-                message: "Enter intern's ID:",
+                message: "Intern's ID:",
                 name: "id",
                 when: ({ role }) => role === "Intern"
             },
             {
-                message: "Enter engineer's email address:",
+                message: "Engineer's email address:",
                 name: "email",
-                //email validator
+                //validate email
                 default: () => {},
                     validate: function (email) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                      if (valid) {
                     return true;
                     } else {
-                    console.log(" ---Please enter a valid email!---")
+                    console.log(" Enter a valid email address! ")
                     return false;
                     }
                   },  
@@ -111,14 +111,14 @@ const addEmployee = () => {
             {
                 message: "Enter intern's email address:",
                 name: "email",
-                //email validator
+                //validate email
                 default: () => {},
                     validate: function (email) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                      if (valid) {
                     return true;
                     } else {
-                    console.log(" ---Please enter a valid email!---")
+                    console.log(" Enter a valid email address! ")
                     return false;
                     }
                   }, 
@@ -134,16 +134,16 @@ const addEmployee = () => {
                 name: "school",
                 when: ({ role }) => role === "Intern"
             }
-        //function to add created Engineer/Intern info into team array     
-        ]).then(answers => {
-            if (answers.role) {
-                switch (answers.role) {
+        //add Engineer/Intern info into team array     
+        ]).then(responses => {
+            if (responses.role) {
+                switch (responses.role) {
                     case "Engineer":
-                        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+                        const engineer = new Engineer(responses.name, responses.id, responses.email, responses.github);
                         team.push(engineer);
                         break;
                     case "Intern":
-                        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+                        const intern = new Intern(responses.name, responses.id, responses.email, responses.school);
                         team.push(intern);
                         break;
                 }
@@ -174,6 +174,6 @@ const generatePage = (htmlPage) => {
 
     fs.writeFile(outputPath, htmlPage, "utf-8", (err) => {
         if(err) throw err;
-        console.log("Team profile page generated!");
+        console.log("Your team profile page is being generated!");
     });
 }
