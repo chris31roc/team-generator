@@ -109,7 +109,7 @@ const addEmployee = () => {
                 when: ({ role }) => role === "Engineer"
             },
             {
-                message: "Enter intern's email address:",
+                message: "Intern's email address:",
                 name: "email",
                 //validate email
                 default: () => {},
@@ -125,12 +125,12 @@ const addEmployee = () => {
                 when: ({ role }) => role === "Intern"
             },
             {
-                message: "Enter engineer's GitHub username:",
+                message: "Engineer's GitHub username:",
                 name: "github",
                 when: ({ role }) => role === "Engineer"
             },
             {
-                message: "Enter Intern's School name:",
+                message: "Intern's School name:",
                 name: "school",
                 when: ({ role }) => role === "Intern"
             }
